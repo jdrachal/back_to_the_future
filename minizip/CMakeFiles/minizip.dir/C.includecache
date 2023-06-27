@@ -6,43 +6,43 @@
 
 #IncludeRegexTransform: 
 
-/mnt/d/Development/back_to_the_future/minizip/ioapi.c
+/mnt/d/Development/back_to/minizip/ioapi.c
 minizip/ioapi.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/ioapi.h
+/mnt/d/Development/back_to/minizip/minizip/ioapi.h
 
-/mnt/d/Development/back_to_the_future/minizip/minizip/ioapi.h
+/mnt/d/Development/back_to/minizip/minizip/ioapi.h
 stdio.h
 -
 stdlib.h
 -
 zlib.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/zlib.h
+/mnt/d/Development/back_to/minizip/minizip/zlib.h
 stdint.h
 -
 mz64conf.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/mz64conf.h
+/mnt/d/Development/back_to/minizip/minizip/mz64conf.h
 stdint.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/stdint.h
+/mnt/d/Development/back_to/minizip/minizip/stdint.h
 
-/mnt/d/Development/back_to_the_future/minizip/minizip/unzip.h
+/mnt/d/Development/back_to/minizip/minizip/unzip.h
 zlib.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/zlib.h
+/mnt/d/Development/back_to/minizip/minizip/zlib.h
 ioapi.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/ioapi.h
+/mnt/d/Development/back_to/minizip/minizip/ioapi.h
 bzlib.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/bzlib.h
+/mnt/d/Development/back_to/minizip/minizip/bzlib.h
 
-/mnt/d/Development/back_to_the_future/minizip/minizip/zip.h
+/mnt/d/Development/back_to/minizip/minizip/zip.h
 zlib.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/zlib.h
+/mnt/d/Development/back_to/minizip/minizip/zlib.h
 ioapi.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/ioapi.h
+/mnt/d/Development/back_to/minizip/minizip/ioapi.h
 bzlib.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/bzlib.h
+/mnt/d/Development/back_to/minizip/minizip/bzlib.h
 
-/mnt/d/Development/back_to_the_future/minizip/minizip/zipcrypt.h
+/mnt/d/Development/back_to/minizip/minizip/zipcrypt.h
 
-/mnt/d/Development/back_to_the_future/minizip/unzip.c
+/mnt/d/Development/back_to/minizip/unzip.c
 stdio.h
 -
 stdlib.h
@@ -50,9 +50,9 @@ stdlib.h
 string.h
 -
 zlib.h
-/mnt/d/Development/back_to_the_future/minizip/zlib.h
+/mnt/d/Development/back_to/minizip/zlib.h
 minizip/unzip.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/unzip.h
+/mnt/d/Development/back_to/minizip/minizip/unzip.h
 stddef.h
 -
 string.h
@@ -62,9 +62,9 @@ stdlib.h
 errno.h
 -
 zipcrypt.h
-/mnt/d/Development/back_to_the_future/minizip/zipcrypt.h
+/mnt/d/Development/back_to/minizip/zipcrypt.h
 
-/mnt/d/Development/back_to_the_future/minizip/zip.c
+/mnt/d/Development/back_to/minizip/zip.c
 stdio.h
 -
 stdlib.h
@@ -74,9 +74,9 @@ string.h
 time.h
 -
 zlib.h
-/mnt/d/Development/back_to_the_future/minizip/zlib.h
+/mnt/d/Development/back_to/minizip/zlib.h
 minizip/zip.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/zip.h
+/mnt/d/Development/back_to/minizip/minizip/zip.h
 stddef.h
 -
 string.h
@@ -86,5 +86,5 @@ stdlib.h
 errno.h
 -
 minizip/zipcrypt.h
-/mnt/d/Development/back_to_the_future/minizip/minizip/zipcrypt.h
+/mnt/d/Development/back_to/minizip/minizip/zipcrypt.h
 

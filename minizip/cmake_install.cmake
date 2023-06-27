@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/d/Development/back_to_the_future/minizip
+# Install script for directory: /mnt/d/Development/back_to/minizip
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

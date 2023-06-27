@@ -6,5 +6,5 @@ C_FLAGS =
 
 C_DEFINES = 
 
-C_INCLUDES = -I/mnt/d/Development/back_to_the_future/minizip 
+C_INCLUDES = -I/mnt/d/Development/back_to/minizip 
 

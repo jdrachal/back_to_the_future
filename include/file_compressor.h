@@ -3,6 +3,8 @@
 
 #include <string>
 
+constexpr size_t bufferSize = 1024*1024*2;
+
 class FileCompressor {
 public:
     static void compressFile(const std::string& inputFile, const std::string& outputFile);

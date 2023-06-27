@@ -17,7 +17,6 @@ void FileCompressor::compressFile(const std::string& inputFile, const std::strin
         return;
     }
 
-    constexpr size_t bufferSize = 1024*1024*2;
     std::array<uint8_t, bufferSize> inBuf;
     std::array<uint8_t, bufferSize> outBuf;
 
@@ -74,7 +73,6 @@ void FileCompressor::decompressFile(const std::string& inputFile, const std::str
         return;
     }
 
-    constexpr size_t bufferSize = 1024*1024*2;
     std::array<uint8_t, bufferSize> inBuf;
     std::array<uint8_t, bufferSize> outBuf;
 

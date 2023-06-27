@@ -6,11 +6,10 @@
 #include <vector>
 
 typedef unsigned char ubyte_t;
-typedef std::vector<ubyte_t> sha256_t;
 
 static constexpr std::size_t s_block_size_4k = (1 << 12);
 
-sha256_t FileHasher::calculateFileSha256(const std::string &file_path){
+std::string FileHasher::calculateFileSha256(const std::string &file_path){
     std::ifstream ifs(file_path);
     char buffer[s_block_size_4k];
 
@@ -27,5 +26,10 @@ sha256_t FileHasher::calculateFileSha256(const std::string &file_path){
     SHA256_Final(sha_hash.data(), &ctx);
     ifs.close();
 
-    return sha_hash;
+    std::string hashStr;
+    for (int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
+        hashStr += sha_hash[i];
+    }
+
+    return hashStr;
 }

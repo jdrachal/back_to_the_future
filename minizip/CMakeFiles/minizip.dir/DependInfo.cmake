@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/mnt/d/Development/back_to_the_future/minizip/ioapi.c" "/mnt/d/Development/back_to_the_future/minizip/CMakeFiles/minizip.dir/ioapi.c.o"
-  "/mnt/d/Development/back_to_the_future/minizip/unzip.c" "/mnt/d/Development/back_to_the_future/minizip/CMakeFiles/minizip.dir/unzip.c.o"
-  "/mnt/d/Development/back_to_the_future/minizip/zip.c" "/mnt/d/Development/back_to_the_future/minizip/CMakeFiles/minizip.dir/zip.c.o"
+  "/mnt/d/Development/back_to/minizip/ioapi.c" "/mnt/d/Development/back_to/minizip/CMakeFiles/minizip.dir/ioapi.c.o"
+  "/mnt/d/Development/back_to/minizip/unzip.c" "/mnt/d/Development/back_to/minizip/CMakeFiles/minizip.dir/unzip.c.o"
+  "/mnt/d/Development/back_to/minizip/zip.c" "/mnt/d/Development/back_to/minizip/CMakeFiles/minizip.dir/zip.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

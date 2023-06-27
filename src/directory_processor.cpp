@@ -7,19 +7,9 @@
 #include "../proto/fs.pb.h"
 #include <iostream>
 #include <unistd.h>
+#include <unordered_map>
 
-static sha256_t file_map[MAX_FILES_NUMBER+1]; // 0 for no matching hash
-
-uint32_t DirectoryProcessor::check_if_exists(sha256_t sha){
-    uint32_t ret = 0;
-    for (int i = 1; i < MAX_FILES_NUMBER; i++) {
-        if(file_map[i] == sha){
-            ret = i;
-            break;
-        }
-    }
-    return ret;
-}
+std::unordered_map<std::string, uint32_t> file_map;
 
 bool DirectoryProcessor::createDirectory(const std::string& directoryPath)
 {
@@ -37,14 +27,13 @@ bool DirectoryProcessor::createDirectory(const std::string& directoryPath)
 void DirectoryProcessor::processFile(const std::string& path, const std::string& name, mypackage::Directory* parentDir){
     auto f = parentDir->add_file();
     f->set_name(name);
-    auto file_sha = FileHasher::calculateFileSha256(path);
-    auto ret = check_if_exists(file_sha);
-    if(ret == 0){
-        FileCompressor::compressFile(path, DATA_ZIP_DIR + "/" + std::to_string(next_file_number_));
-        file_map[next_file_number_] = file_sha;
-        f->set_data_filename(std::to_string(next_file_number_++));
+    auto hash = FileHasher::calculateFileSha256(path);
+    if(file_map.find(hash) != file_map.end()){
+        f->set_data_filename(std::to_string(file_map[hash]));
     } else {
-        f->set_data_filename(std::to_string(ret));
+        FileCompressor::compressFile(path, DATA_ZIP_DIR + "/" + std::to_string(next_file_number_));
+        file_map.insert(std::make_pair(hash, next_file_number_));
+        f->set_data_filename(std::to_string(next_file_number_++));
     }
 }
 

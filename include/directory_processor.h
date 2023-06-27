@@ -21,7 +21,6 @@ public:
 private:
 
     void processFile(const std::string& path, const std::string& name, mypackage::Directory* parentDir);
-    uint32_t check_if_exists(sha256_t sha);
     uint32_t next_file_number_;
 };
 

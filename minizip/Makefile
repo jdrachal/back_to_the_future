@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/d/Development/back_to_the_future
+CMAKE_SOURCE_DIR = /mnt/d/Development/back_to
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/d/Development/back_to_the_future
+CMAKE_BINARY_DIR = /mnt/d/Development/back_to
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /mnt/d/Development/back_to_the_future && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Development/back_to_the_future/CMakeFiles /mnt/d/Development/back_to_the_future/minizip/CMakeFiles/progress.marks
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f CMakeFiles/Makefile2 minizip/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Development/back_to_the_future/CMakeFiles 0
+	cd /mnt/d/Development/back_to && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Development/back_to/CMakeFiles /mnt/d/Development/back_to/minizip/CMakeFiles/progress.marks
+	cd /mnt/d/Development/back_to && $(MAKE) -f CMakeFiles/Makefile2 minizip/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Development/back_to/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f CMakeFiles/Makefile2 minizip/clean
+	cd /mnt/d/Development/back_to && $(MAKE) -f CMakeFiles/Makefile2 minizip/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f CMakeFiles/Makefile2 minizip/preinstall
+	cd /mnt/d/Development/back_to && $(MAKE) -f CMakeFiles/Makefile2 minizip/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f CMakeFiles/Makefile2 minizip/preinstall
+	cd /mnt/d/Development/back_to && $(MAKE) -f CMakeFiles/Makefile2 minizip/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /mnt/d/Development/back_to_the_future && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/d/Development/back_to && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 minizip/CMakeFiles/minizip.dir/rule:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f CMakeFiles/Makefile2 minizip/CMakeFiles/minizip.dir/rule
+	cd /mnt/d/Development/back_to && $(MAKE) -f CMakeFiles/Makefile2 minizip/CMakeFiles/minizip.dir/rule
 .PHONY : minizip/CMakeFiles/minizip.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ minizip: minizip/CMakeFiles/minizip.dir/rule
 
 # fast build rule for target.
 minizip/fast:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/build
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/build
 .PHONY : minizip/fast
 
 ioapi.o: ioapi.c.o
@@ -131,7 +131,7 @@ ioapi.o: ioapi.c.o
 
 # target to build an object file
 ioapi.c.o:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/ioapi.c.o
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/ioapi.c.o
 .PHONY : ioapi.c.o
 
 ioapi.i: ioapi.c.i
@@ -140,7 +140,7 @@ ioapi.i: ioapi.c.i
 
 # target to preprocess a source file
 ioapi.c.i:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/ioapi.c.i
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/ioapi.c.i
 .PHONY : ioapi.c.i
 
 ioapi.s: ioapi.c.s
@@ -149,7 +149,7 @@ ioapi.s: ioapi.c.s
 
 # target to generate assembly for a file
 ioapi.c.s:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/ioapi.c.s
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/ioapi.c.s
 .PHONY : ioapi.c.s
 
 unzip.o: unzip.c.o
@@ -158,7 +158,7 @@ unzip.o: unzip.c.o
 
 # target to build an object file
 unzip.c.o:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/unzip.c.o
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/unzip.c.o
 .PHONY : unzip.c.o
 
 unzip.i: unzip.c.i
@@ -167,7 +167,7 @@ unzip.i: unzip.c.i
 
 # target to preprocess a source file
 unzip.c.i:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/unzip.c.i
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/unzip.c.i
 .PHONY : unzip.c.i
 
 unzip.s: unzip.c.s
@@ -176,7 +176,7 @@ unzip.s: unzip.c.s
 
 # target to generate assembly for a file
 unzip.c.s:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/unzip.c.s
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/unzip.c.s
 .PHONY : unzip.c.s
 
 zip.o: zip.c.o
@@ -185,7 +185,7 @@ zip.o: zip.c.o
 
 # target to build an object file
 zip.c.o:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/zip.c.o
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/zip.c.o
 .PHONY : zip.c.o
 
 zip.i: zip.c.i
@@ -194,7 +194,7 @@ zip.i: zip.c.i
 
 # target to preprocess a source file
 zip.c.i:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/zip.c.i
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/zip.c.i
 .PHONY : zip.c.i
 
 zip.s: zip.c.s
@@ -203,7 +203,7 @@ zip.s: zip.c.s
 
 # target to generate assembly for a file
 zip.c.s:
-	cd /mnt/d/Development/back_to_the_future && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/zip.c.s
+	cd /mnt/d/Development/back_to && $(MAKE) -f minizip/CMakeFiles/minizip.dir/build.make minizip/CMakeFiles/minizip.dir/zip.c.s
 .PHONY : zip.c.s
 
 # Help Target
@@ -235,6 +235,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /mnt/d/Development/back_to_the_future && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/d/Development/back_to && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
