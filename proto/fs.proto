@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FieldOptions {
+  bool serialize_to_ostream = 60000;
+}
+
+package mypackage;
+
+message File {
+  string name = 1 [(serialize_to_ostream) = true];
+  string data_filename = 2 [(serialize_to_ostream) = true];
+}
+
+message Directory {
+  string name = 1 [(serialize_to_ostream) = true];
+  repeated Directory directory = 2 [(serialize_to_ostream) = true];
+  repeated File file = 3 [(serialize_to_ostream) = true];
+}
+
