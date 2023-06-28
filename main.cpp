@@ -75,24 +75,4 @@ int main(int argc, char* argv[]) {
     FinishHelp:
     std::cerr << options.help({"target", "arg"}) << std::endl;
     exit(0);
-    /*
-    std::string rootDirectory = "./CMakeFiles";
-
-    root_directory.set_name(rootDirectory);
-    processDirectory(rootDirectory, &root_directory);
-    if (serializeDirectoryToFile(root_directory, metadata_file)) {
-        std::cerr << "Failed to serialize message to file: " << metadata_file << std::endl;
-        return 1;
-    }
-
-    createArchive();
-    unzipFiles(archive_dir, "./out");
-
-    mypackage::Directory received_metadata;
-    deSerializeFileToDirectory(received_metadata, received_metadata_dir);
-
-    recreateDirectories(received_metadata, "./out", "./final");
-
-    */
-
 }

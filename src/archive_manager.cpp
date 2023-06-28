@@ -23,8 +23,6 @@ void ArchiveManager::createArchive(){
         }
     }
 
-    struct dirent* entry;
-
     for (const auto& entry : fs::directory_iterator(path))
     {
         const std::string name = entry.path().filename().string();
