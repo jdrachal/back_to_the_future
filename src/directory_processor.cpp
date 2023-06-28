@@ -2,24 +2,29 @@
 #include "file_hasher.h"
 #include "file_compressor.h"
 #include "common.h"
-#include <sys/stat.h>
-#include <dirent.h>
 #include "../proto/fs.pb.h"
 #include <iostream>
-#include <unistd.h>
 #include <unordered_map>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 std::unordered_map<std::string, uint32_t> file_map;
 
 bool DirectoryProcessor::createDirectory(const std::string& directoryPath)
 {
-    int status = mkdir(directoryPath.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
-    if (status == 0) {
-        std::cerr << "Directory created successfully." << std::endl;
-        return true;
-    }
-    else {
-        std::cerr << "Error occurred during directory creation." << std::endl;
+    fs::path path(directoryPath);
+
+    try {
+        if (fs::create_directories(path)) {
+            std::cerr << "Directory created successfully." << std::endl;
+            return true;
+        } else {
+            std::cerr << "Error occurred during directory creation." << std::endl;
+            return false;
+        }
+    } catch (const std::filesystem::filesystem_error& ex) {
+        std::cerr << "Error occurred during directory creation: " << ex.what() << std::endl;
         return false;
     }
 }
@@ -38,70 +43,76 @@ void DirectoryProcessor::processFile(const std::string& path, const std::string&
 }
 
 void DirectoryProcessor::clearTempData(const std::string& path) {
-    DIR* dir = opendir(path.c_str());
-    if (dir == nullptr) {
+    fs::path directoryPath(path);
+
+    if (!fs::is_directory(directoryPath))
+    {
         std::cerr << "Failed to open directory: " << path << std::endl;
         return;
     }
 
-    struct dirent* entry;
-    while ((entry = readdir(dir)) != nullptr) {
-        std::string entryName = entry->d_name;
-        if (entryName != "." && entryName != "..") {
-            std::string entryPath = path + "/" + entryName;
-            struct stat entryStat;
-            if (lstat(entryPath.c_str(), &entryStat) == 0) {
-                if (S_ISREG(entryStat.st_mode)) {
-                    // Entry is a directory
-                    if (unlink(entryPath.c_str()) != 0) {
-                        std::cerr << "Failed to remove file: " << entryPath << std::endl;
-                    }
+    for (const auto& entry : fs::directory_iterator(directoryPath))
+    {
+        const std::string entryName = entry.path().filename().string();
+
+        if (entryName != "." && entryName != "..")
+        {
+            const fs::path entryPath = entry.path();
+
+            if (fs::is_regular_file(entryPath))
+            {
+                if (!fs::remove(entryPath))
+                {
+                    std::cerr << "Failed to remove file: " << entryPath << std::endl;
                 }
-            } else {
+            }
+            else if (fs::is_directory(entryPath))
+            {
+                clearTempData(entryPath.string());
+
+                if (!fs::remove(entryPath))
+                {
+                    std::cerr << "Failed to remove directory: " << entryPath << std::endl;
+                }
+            }
+            else
+            {
                 std::cerr << "Failed to get file status: " << entryPath << std::endl;
             }
         }
     }
 
-    closedir(dir);
-
-    if (rmdir(path.c_str()) != 0) {
-        std::cerr << "Failed to remove directory: " << path << std::endl;
+    if (!fs::remove(directoryPath))
+    {
+        std::cerr << "Failed to remove directory: " << directoryPath << std::endl;
     }
 }
 
 void DirectoryProcessor::processDirectory(const std::string& directoryPath, mypackage::Directory* parentDir){
-    DIR* dir = opendir(directoryPath.c_str());
-    if (dir == nullptr)
+    fs::path path(directoryPath);
+
+    if (!fs::is_directory(path))
     {
         std::cerr << "Failed to open directory: " << directoryPath << std::endl;
         return;
     }
 
-    struct dirent* entry;
-    while ((entry = readdir(dir)) != nullptr)
+    for (const auto& entry : fs::directory_iterator(path))
     {
-        std::string name = entry->d_name;
-        std::string path = directoryPath + "/" + name;
+        const std::string name = entry.path().filename().string();
+        const std::string entryPath = entry.path().string();
 
-        struct stat st;
-        if (stat(path.c_str(), &st) == 0)
+        const fs::file_status status = entry.status();
+
+        if (fs::is_regular_file(status))
         {
-            if (S_ISREG(st.st_mode))
-            {
-                // Process regular file
-                processFile(path, name, parentDir);
-
-            }
-            else if (S_ISDIR(st.st_mode) && name != "." && name != "..")
-            {
-                auto d = parentDir->add_directory();
-                d->set_name(name);
-                // Recursively process subdirectory
-                processDirectory(path, d);
-            }
+            processFile(entryPath, name, parentDir);
+        }
+        else if (fs::is_directory(status) && name != "." && name != "..")
+        {
+            mypackage::Directory* subDir = parentDir->add_directory();
+            subDir->set_name(name);
+            processDirectory(entryPath, subDir);
         }
     }
-
-    closedir(dir);
 }

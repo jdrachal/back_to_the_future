@@ -1,21 +1,22 @@
 #include "archive_manager.h"
 #include "directory_processor.h"
-#include <sys/stat.h>
 #include <vector>
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <dirent.h>
+#include <filesystem>
 #include "minizip/zip.h"
 #include "common.h"
 #include "minizip/unzip.h"
 #include "file_compressor.h"
 
+namespace fs = std::filesystem;
 
 void ArchiveManager::createArchive(){
     std::vector<std::string> fileNames;
-    DIR* dir = opendir(DATA_ZIP_DIR.c_str());
-    if (dir == nullptr)
+
+    fs::path path(DATA_ZIP_DIR);
+    if (!fs::is_directory(path))
     {
         if(!DirectoryProcessor::createDirectory(DATA_ZIP_DIR.c_str())) {
             return;
@@ -24,20 +25,17 @@ void ArchiveManager::createArchive(){
 
     struct dirent* entry;
 
-    while ((entry = readdir(dir)) != nullptr)
+    for (const auto& entry : fs::directory_iterator(path))
     {
-        std::string name = entry->d_name;
-        std::string path = DATA_ZIP_DIR + "/" + name;
+        const std::string name = entry.path().filename().string();
+        const std::string filePath = DATA_ZIP_DIR + "/" + name;
 
-        struct stat st;
-        if (stat(path.c_str(), &st) == 0)
+        if (fs::is_regular_file(entry.status()))
         {
-            if (S_ISREG(st.st_mode))
-            {
-                fileNames.push_back(name);
-            }
+            fileNames.push_back(name);
         }
     }
+
     zipFiles(fileNames, archive_dir_);
     DirectoryProcessor::clearTempData(DATA_ZIP_DIR);
 }
